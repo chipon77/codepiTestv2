@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Book;
+use App\Category;
 
 class BookController extends Controller
 {
@@ -23,7 +25,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $lists=Category::get();
+        return view('addBook',['lists' => $lists]);
     }
 
     /**

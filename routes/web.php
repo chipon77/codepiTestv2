@@ -11,4 +11,12 @@
 |
 */
 
-Route::get('/', 'CatalogueController@index');
+Route::get('/', 'CatalogueController@index')->name('home');
+
+Route::get('book/{id}', 'BookController@show')->where("n", '[0-9]+')->name('details');
+Route::get('book/add', 'BookController@create')->name('addBook');
+Route::post('book/add', 'BookController@store')->name('sendAddBook');
+
+Route::post('category/add', 'CategoryController@store')->name('addCategory');
+Route::post('category/edit/{id}', 'CategoryController@update')->name('editCategory');
+

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Book;
+use App\Category;
 use Illuminate\Http\Request;
 
 class CatalogueController extends Controller
@@ -13,7 +14,9 @@ class CatalogueController extends Controller
      */
     public function index()
     {
-        return view('catalogue');
+        $books=Book::where('display','=',1)->paginate(9);
+        $lists=Category::get();
+        return view('catalogue',['books' => $books, 'lists' => $lists]);
     }
 
     /**

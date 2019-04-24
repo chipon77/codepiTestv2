@@ -10,7 +10,7 @@
 	<form method="post" action="{{route('editBook', ['id' => $id])}}">
 		@csrf 
 		<h1>
-			<div  style="display: inline-block" class="base">{{$details->title}} </div>
+			<div  style="display: inline-block" class="base">{{$details->title}}</div>
 			<div  style="display: inline-block">
 				<input type="text" name="title" class="modify form-control" style="visibility: hidden;" value="{{$details->title}}"> 
 			</div>
@@ -18,7 +18,7 @@
 		<div class="my-3 p-3 bg-white rounded box-shadow">   
 			<div class="media text-muted pt-3">
 				<div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray" style="font-size: 20px">
-					<div style="display: inline-block">Auteur : </div> 
+					<div style="display: inline-block">@lang('book.author')</div> 
 					<div class="base" style="display: inline-block">{{$details->author }}</div>
 					<div  style="display: inline-block">
 						<input type="text" name="author" class="modify form-control" style="visibility: hidden;" value="{{$details->author}}"> 
@@ -29,7 +29,7 @@
 		<div class="my-3 p-3 bg-white rounded box-shadow">
 			<div class="media text-muted pt-3">
 				<div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray" style="font-size: 20px">
-					<div style="display: inline-block">Editeur :</div>
+					<div style="display: inline-block">@lang('book.editor')</div>
 					<div class="base" style="display: inline-block">{{ $details->editor }}</div>
 					<div  style="display: inline-block">
 						<input type="text" name="editor" class="modify form-control" style="visibility: hidden;" value="{{$details->editor}}"> 
@@ -40,7 +40,7 @@
 		<div class="my-3 p-3 bg-white rounded box-shadow">
 			<div class="media text-muted pt-3">
 				<div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"style="font-size: 20px">
-					<div style="display: inline-block">Prix :</div>
+					<div style="display: inline-block">@lang('book.price')</div>
 					<div class="base" style="display: inline-block">{{ $details->price }} € </div>
 					<div  style="display: inline-block">
 						<input type="number" name="price" class="modify form-control" style="visibility: hidden;" value="{{$details->price}}"> 
@@ -51,7 +51,7 @@
 		<div class="my-3 p-3 bg-white rounded box-shadow">
 			<div class="media text-muted pt-3">
 				<div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray" style="font-size: 20px">
-					<div style="display: inline-block">Type : </div>
+					<div style="display: inline-block">@lang('book.type')</div>
 					<div class="base" style="display: inline-block">{{ $details->type }}</div>
 					<div  style="display: inline-block">
 						<input type="text" name="type" class="modify form-control" style="visibility: hidden;" value="{{$details->type}}"> 
@@ -62,7 +62,7 @@
 		<div class="my-3 p-3 bg-white rounded box-shadow">
 			<div class="media text-muted pt-3">
 				<div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray" style="font-size: 20px">
-					<div style="display: inline-block">Catégories :</div>
+					<div style="display: inline-block">@lang('book.category')</div>
 					<div class="base" style="display: inline-block">
 						<div>
 							@foreach($listcategorie as $categorie)
@@ -70,13 +70,13 @@
 							@endforeach
 						</div>
 					</div>
-					<div  style="display: inline-block">
+					<div  style="display: inline-block, vertical-align:middle">
 						<select name="category[]" class="form-control modify" style="visibility: hidden;" multiple="multiple">
             				@foreach ($lists as $list)
             					@if ($listcategorie->find($list->id))
-                				<option value="{{ $list->id }}" selected="selected">{{ $list->name}} </option>
+                					<option value="{{ $list->id }}" selected="selected">{{ $list->name}} </option>
                 				@else 
-                				<option value="{{ $list->id }}" >{{ $list->name}} </option>
+                					<option value="{{ $list->id }}" >{{ $list->name}} </option>
                 				@endif
             				@endforeach
         				</select>
@@ -84,7 +84,7 @@
 				</div>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary modify" style="visibility: hidden;">Submit</button> 
+		<button type="submit" class="btn btn-primary modify" style="visibility: hidden;">@lang('book.submit')</button> 
 	</form> 	
 </div>
 
@@ -92,14 +92,14 @@
 	<div class="col-md-4">
 		<form  method="post" action="{{route('deleteBook', ['id' => $id])}}">
 			@csrf
-			<button type="submit" class="btn btn-primary">Delete</button> 
+			<button type="submit" class="btn btn-primary">@lang('book.delete')</button> 
 		</form>
 	</div>
 	<div class="col-md-4">
-		<a href="#" id="edit" class="btn btn-primary">Modifier le produit</a>
+		<a href="#" id="edit" class="btn btn-primary">@lang('book.modify')</a>
 	</div>
 	<div class="col-md-4">
-		<a href="#" data-toggle="modal" data-target="#liecategorie" class="btn btn-primary">Lier à une catégorie</a>
+		<a href="#" data-toggle="modal" data-target="#liecategorie" class="btn btn-primary">@lang('book.link')</a>
 	</div>
 </div>
 

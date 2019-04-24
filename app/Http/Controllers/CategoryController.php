@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Book;
 use App\Category;
-
+use App\Http\Requests\CategoryRequest;
 class CategoryController extends Controller
 {
     /**
@@ -34,7 +34,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $category= new category;
         $category->name =$request->name;
@@ -71,7 +71,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(CategoryRequest $request)
     {   
         $category=  category::where('id', $request->id);
         $category->update(['name' => $request->name]);

@@ -37,7 +37,16 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book= new book;
+        $book->title = $request->title;
+        $book->type = $request->type;
+        $book->author = $request->author;
+        $book->editor = $request->editor;
+        $book->price = $request->price;
+        $book->display=1;       
+        $book->save();
+        $book->category()->attach($request->category);
+        return redirect()->route('home'); 
     }
 
     /**
@@ -48,7 +57,10 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        $details=  book::find($id);
+        $listcategorie=$details->category()->get();//liste categories d'UN produit
+        $lists=Category::get();
+        return view('book',['details' => $details,'lists' => $lists,'listcategorie' => $listcategorie])->with('id', $id);
     }
 
     /**
@@ -59,7 +71,7 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -71,7 +83,13 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book=  book::where('id', $id);
+        $book->update(['title' => $request->title]);
+        $book->update(['author' => $request->author]);
+        $book->update(['type' => $request->type]);
+        $book->update(['editor' => $request->editor]);
+        $book->update(['price' => $request->price]);
+        return redirect()->route('details', ['id' => $id]); 
     }
 
     /**
@@ -82,6 +100,15 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $details=  book::where('id', $id)->update(['display' => 0]);
+        return redirect()->route('home'); 
+    }
+
+
+    public function link(Request $request, $id)
+    {
+        $category= category::where('id',$request->category)->first();
+        $category->book()->attach($id);
+        return redirect()->route('details', ['id' => $id]);
     }
 }

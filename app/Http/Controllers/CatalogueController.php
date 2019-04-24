@@ -26,7 +26,7 @@ class CatalogueController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

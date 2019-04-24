@@ -71,9 +71,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
-    {
-        $category=  category::where('id', $id);
+    public function update(Request $request)
+    {   
+        $category=  category::where('id', $request->id);
         $category->update(['name' => $request->name]);
         return  redirect()->route('home'); 
     }

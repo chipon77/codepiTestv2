@@ -6,7 +6,8 @@
 
 @section('contenu')
 
-    <form method="post" action="{{route('sendAddBook')}}">   
+    <form method="post" action="{{route('sendAddBook')}}"> 
+        @csrf  
         <label>Entrez le titre :  </label>
         <input type="text" name="title" class="form-control">  
         <label>Entrez l'auteur :  </label>
@@ -18,7 +19,7 @@
         <label>Entrez le type :  </label>
         <input type="text" name="type" class="form-control"> 
         <label>Entrez la categorie :  </label> 
-        <select nom="id_category" class="form-control" multiple>
+        <select name="category" class="form-control">
             @foreach ($lists as $list)
                 <option value="{{ $list->id }}">{{ $list->name}} </option>
             @endforeach

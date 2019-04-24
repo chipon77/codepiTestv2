@@ -70,6 +70,17 @@
 							@endforeach
 						</div>
 					</div>
+					<div  style="display: inline-block">
+						<select name="category[]" class="form-control modify" style="visibility: hidden;" multiple="multiple">
+            				@foreach ($lists as $list)
+            					@if ($listcategorie->find($list->id))
+                				<option value="{{ $list->id }}" selected="selected">{{ $list->name}} </option>
+                				@else 
+                				<option value="{{ $list->id }}" >{{ $list->name}} </option>
+                				@endif
+            				@endforeach
+        				</select>
+					</div>
 				</div>
 			</div>
 		</div>

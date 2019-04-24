@@ -19,7 +19,7 @@
         <label>Entrez le type :  </label>
         <input type="text" name="type" class="form-control"> 
         <label>Entrez la categorie :  </label> 
-        <select name="category" class="form-control" multiple>
+        <select name="category[]" class="form-control" multiple="multiple">
             @foreach ($lists as $list)
                 <option value="{{ $list->id }}">{{ $list->name}} </option>
             @endforeach

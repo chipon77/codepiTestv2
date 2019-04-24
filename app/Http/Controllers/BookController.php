@@ -46,7 +46,10 @@ class BookController extends Controller
         $book->price = $request->price;
         $book->display=1;       
         $book->save();
-        $book->category()->attach($request->category);
+        
+        foreach ($request->category as $key ) {
+            $book->category()->attach($key);
+        }
         return redirect()->route('home'); 
     }
 
@@ -84,12 +87,22 @@ class BookController extends Controller
      */
     public function update(BookRequest $request, $id)
     {
-        $book=  book::where('id', $id);
+        $book=book::where('id', $id);
         $book->update(['title' => $request->title]);
         $book->update(['author' => $request->author]);
         $book->update(['type' => $request->type]);
         $book->update(['editor' => $request->editor]);
         $book->update(['price' => $request->price]);
+
+        foreach ($request->category as $key ) {
+            $category= category::where('id',$key)->first();
+            if ($category->book()->find($id)) {
+                # code...
+            }
+            else{
+                $category->book()->attach($id);
+            }
+        }    
         return redirect()->route('details', ['id' => $id]); 
     }
 

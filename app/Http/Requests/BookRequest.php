@@ -29,7 +29,7 @@ class BookRequest extends FormRequest
             'price' => 'bail|required|numeric',
             'editor' => 'bail|required|alpha',
             'type' => 'bail|required|alpha',
-            'category' => 'bail|integer'
+            'category' => 'bail|array'
                 ];
     }
 

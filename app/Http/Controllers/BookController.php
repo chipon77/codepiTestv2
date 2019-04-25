@@ -39,7 +39,7 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-        $book=new book;
+        $book = new book;
         $book->title = $request->title;
         $book->type = $request->type;
         $book->author = $request->author;

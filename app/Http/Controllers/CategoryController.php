@@ -29,15 +29,15 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Save in DB a new category
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryRequest $request)
     {
-        $category= new category;
-        $category->name =$request->name;
+        $category = new category;
+        $category->name = $request->name;
         $category->save();
         return redirect()->route('home'); 
     }
@@ -65,7 +65,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the name of category
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -73,7 +73,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request)
     {   
-        $category=  category::where('id', $request->id);
+        $category = category::where('id', $request->id);
         $category->update(['name' => $request->name]);
         return  redirect()->route('home'); 
     }

@@ -80,7 +80,7 @@
 	</div>
 </div>
 
-<script type="text/javascript">//javascript pour pré-remplir l'input avec le nom de la catégorie à modifier
+<script type="text/javascript">
 	$("#editcategorie").change(function(){
 		$("#newname").val($("#editcategorie option:selected").text());
 	});

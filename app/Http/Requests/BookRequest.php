@@ -24,13 +24,13 @@ class BookRequest extends FormRequest
     public function rules()
     {
         return [
-            'author' => 'bail|required|alpha',
-            'title' => 'bail|required|alpha',
+            'author' => 'bail|required|regex:/^[A-zÀ-ú]+$/',
+            'title' => 'bail|required|regex:/^[A-zÀ-ú0-9\s]+$/',
             'price' => 'bail|required|numeric',
-            'editor' => 'bail|required|alpha',
-            'type' => 'bail|required|alpha',
-            'category' => 'bail|array'
-                ];
+            'editor' => 'bail|required|regex:/^[A-zÀ-ú\s]+$/',
+            'type' => 'bail|required|regex:/^[A-zÀ-ú]+$/',
+            'categories' => 'bail|array|required'
+        ];
     }
 
 }

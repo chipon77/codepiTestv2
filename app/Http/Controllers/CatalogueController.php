@@ -8,15 +8,15 @@ use Illuminate\Http\Request;
 class CatalogueController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * show catalogue page
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $books=Book::where('display','=',1)->paginate(9);
-        $lists=Category::get();
-        return view('catalogue',['books' => $books, 'lists' => $lists]);
+        $books = Book::where('display','=',1)->paginate(9);
+        $lists = Category::get();
+        return view('catalogue', ['books' => $books, 'lists' => $lists]);
     }
 
     /**

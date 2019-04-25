@@ -24,7 +24,7 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail|required|alpha|unique:categories,name',
+            'name' => 'sometimes|bail|required|alpha|unique:categories,name',
         ];
     }
 }

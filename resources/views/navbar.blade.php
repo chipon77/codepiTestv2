@@ -6,13 +6,13 @@
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
 			<li class="nav-item active">
-				<a class="nav-link" href="{{route('home')}}">
+				<a class="nav-link" href="{{ route('home') }}">
 					@lang('navbar.home') 
 					<span class="sr-only">(current)</span>
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{route('addBook')}}">@lang('navbar.addBook')</a>
+				<a class="nav-link" href="{{ route('addBook') }}">@lang('navbar.addBook')</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#" data-toggle="modal" data-target="#ajoutcategorie">@lang('navbar.addCategory')</a>
@@ -34,7 +34,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form method="post" action="{{route('addCategory')}}">
+				<form method="post" action="{{ route('addCategory') }}">
 					@csrf     
 					<div class="form-group">
 						<label for="exampleInputEmail1">@lang('navbar.nameCategory')</label>
@@ -66,7 +66,7 @@
 					<label>@lang('navbar.selectCategory') </label>
 					<select name="id" class="form-control" id="editcategorie" form="editID">
 						@foreach ($lists as $list)
-							<option value="{{ $list->id }}">{{ $list->name}} </option>
+							<option value="{{ $list->id }}">{{ $list->name }} </option>
 						@endforeach
 					</select>
 					<input type="text" name="name" class="form-control" id="newname" style="margin-top :10px">         

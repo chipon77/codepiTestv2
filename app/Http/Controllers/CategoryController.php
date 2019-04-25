@@ -36,7 +36,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $category = new category;
+        $category = new Category;
         $category->name = $request->name;
         $category->save();
         return redirect()->route('home'); 
@@ -73,7 +73,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request)
     {   
-        $category = category::where('id', $request->id);
+        $category = Category::where('id', $request->id);
         $category->update(['name' => $request->name]);
         return  redirect()->route('home'); 
     }

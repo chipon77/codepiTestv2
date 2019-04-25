@@ -39,7 +39,7 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-        $book = new book;
+        $book = new Book;
         $book->title = $request->title;
         $book->type = $request->type;
         $book->author = $request->author;
@@ -61,7 +61,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $details = book::find($id);
+        $details = Book::find($id);
         $categories = $details->category()->get();
         $lists = Category::get();
         return view('book', ['details' => $details, 'lists' => $lists, 'categories' => $categories])->with('id', $id);
@@ -87,7 +87,7 @@ class BookController extends Controller
      */
     public function update(BookRequest $request, $id)
     {
-        $book = book::where('id', $id);
+        $book = Book::where('id', $id);
         $book->update(['title' => $request->title]);
         $book->update(['author' => $request->author]);
         $book->update(['type' => $request->type]);
@@ -110,7 +110,7 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        $details = book::where('id', $id)->update(['display' => 0]);
+        $details = Book::where('id', $id)->update(['display' => 0]);
         return redirect()->route('home'); 
     }
 
@@ -123,7 +123,7 @@ class BookController extends Controller
      */
     public function link(CategoryRequest $request, $id)
     {
-        $category = category::where('id', $request->category)->first();
+        $category = Category::where('id', $request->category)->first();
         if (!$category->book()->find($id)) {
             $category->book()->attach($id);
         }

@@ -94,7 +94,7 @@ class BookController extends Controller
         $book->update(['editor' => $request->editor]);
         $book->update(['price' => $request->price]);
         foreach ($request->categories as $key ) {
-            $category = category::where('id', $key)->first();
+            $category = Category::where('id', $key)->first();
             if (!$category->book()->find($id)) {
                 $category->book()->attach($id);
             }

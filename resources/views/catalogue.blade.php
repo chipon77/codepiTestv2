@@ -13,10 +13,10 @@
                         <div class="card-body">
                             <div class="card-text">                   
                 				<div class="col">
-                					<h1 style="margin-left:auto;" align="center">{ $book->title }</h1>
+                					<h1 style="margin-left:auto;" align="center">{{ $book->title }}</h1>
                 				</div>
         	        			<div class="col" style="margin-top:10px">
-        	        				<h4 style="margin-left:auto;" align="center">{ $book->author }</h4>
+        	        				<h4 style="margin-left:auto;" align="center">{{ $book->author }}</h4>
         	        			</div>
                 				<div class="col">
                 					<a href="{{route('details',['n' => $book->id])}}" class="btn btn-primary">@lang('book.details')</a>

@@ -19,7 +19,7 @@
         	        				<h4 style="margin-left:auto;" align="center">{{ $book->author }}</h4>
         	        			</div>
                 				<div class="col">
-                					<a href="{{route('details',['n' => $book->id])}}" class="btn btn-primary">@lang('book.details')</a>
+                					<a href="{{ route('details',['n' => $book->id]) }}" class="btn btn-primary">@lang('book.details')</a>
                 				</div>
                             </div>
                         </div>

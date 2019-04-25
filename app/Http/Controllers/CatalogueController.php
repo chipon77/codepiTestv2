@@ -14,7 +14,7 @@ class CatalogueController extends Controller
      */
     public function index()
     {
-        $books = Book::where('display','=',1)->paginate(9);
+        $books = Book::where('display', '=', 1)->paginate(9);
         $lists = Category::get();
         return view('catalogue', ['books' => $books, 'lists' => $lists]);
     }

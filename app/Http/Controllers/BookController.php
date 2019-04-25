@@ -94,7 +94,7 @@ class BookController extends Controller
         $book->update(['editor' => $request->editor]);
         $book->update(['price' => $request->price]);
         foreach ($request->categories as $key ) {
-            $category = category::where('id',$key)->first();
+            $category = category::where('id', $key)->first();
             if (!$category->book()->find($id)) {
                 $category->book()->attach($id);
             }
@@ -123,7 +123,7 @@ class BookController extends Controller
      */
     public function link(CategoryRequest $request, $id)
     {
-        $category = category::where('id',$request->category)->first();
+        $category = category::where('id', $request->category)->first();
         if (!$category->book()->find($id)) {
             $category->book()->attach($id);
         }

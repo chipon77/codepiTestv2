@@ -27,7 +27,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        $lists=Category::get();
+        $lists = Category::get();
         return view('addBook', ['lists' => $lists]);
     }
 

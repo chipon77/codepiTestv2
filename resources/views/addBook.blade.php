@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form method="post" action="{{route('sendAddBook')}}"> 
+    <form method="post" action="{{ route('sendAddBook') }}"> 
         @csrf  
         <label>@lang('book.title')</label>
         <input type="text" name="title" class="form-control">  
